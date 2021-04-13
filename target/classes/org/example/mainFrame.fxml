@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainFrame">
+
+   <children>
+      <TableView fx:id="selectedItemTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="790.0" stylesheets="@../../styles/style.css" AnchorPane.topAnchor="20.0">
+        <columns>
+          <TableColumn prefWidth="23.0" text="№" />
+          <TableColumn prefWidth="141.0" text="Имя оборудования" />
+            <TableColumn prefWidth="171.0" text="Местонахождение" />
+            <TableColumn prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
+            <TableColumn prefWidth="167.0" text="Следующее значение нормативной наработки" />
+        </columns>
+      </TableView>
+      <TableView fx:id="allItemTable" layoutX="14.0" layoutY="233.0" prefHeight="347.0" prefWidth="790.0" stylesheets="@../../styles/style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="233.0">
+         <columns>
+            <TableColumn prefWidth="23.0" text="№" />
+            <TableColumn prefWidth="141.0" text="Имя оборудования" />
+            <TableColumn prefWidth="172.0" text="Местонахождение" />
+            <TableColumn prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
+            <TableColumn prefWidth="166.0" text="Следующее значение нормативной наработки" />
+         </columns>
+      </TableView>
+      <Button fx:id="createPlanBut" layoutX="852.0" layoutY="190.0" mnemonicParsing="false" text="Создать план" />
+      <Button fx:id="addItemBut" layoutX="818.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="168.0" text="Добавить оборудование" />
+   </children>
+</AnchorPane>
