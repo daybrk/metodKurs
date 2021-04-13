@@ -10,23 +10,24 @@
    <children>
       <TableView fx:id="selectedItemTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="790.0" stylesheets="@../../styles/style.css" AnchorPane.topAnchor="20.0">
         <columns>
-          <TableColumn prefWidth="23.0" text="№" />
-          <TableColumn prefWidth="141.0" text="Имя оборудования" />
-            <TableColumn prefWidth="171.0" text="Местонахождение" />
-            <TableColumn prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
-            <TableColumn prefWidth="167.0" text="Следующее значение нормативной наработки" />
+            <TableColumn fx:id="selectedId" prefWidth="23.0" text="№" />
+            <TableColumn fx:id="selectedName" prefWidth="141.0" text="Имя оборудования" />
+            <TableColumn fx:id="selectedLocation" prefWidth="171.0" text="Местонахождение" />
+            <TableColumn fx:id="selectedMaintenance" prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
+            <TableColumn fx:id="selectedNextValueSOT" prefWidth="167.0" text="Следующее значение нормативной наработки" />
         </columns>
       </TableView>
       <TableView fx:id="allItemTable" layoutX="14.0" layoutY="233.0" prefHeight="347.0" prefWidth="790.0" stylesheets="@../../styles/style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="233.0">
          <columns>
-            <TableColumn prefWidth="23.0" text="№" />
-            <TableColumn prefWidth="141.0" text="Имя оборудования" />
-            <TableColumn prefWidth="172.0" text="Местонахождение" />
-            <TableColumn prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
-            <TableColumn prefWidth="166.0" text="Следующее значение нормативной наработки" />
+            <TableColumn fx:id="numberOfAll" prefWidth="23.0" text="№" />
+            <TableColumn fx:id="nameOfAllItem" prefWidth="141.0" text="Имя оборудования" />
+            <TableColumn fx:id="locationOfAll" prefWidth="172.0" text="Местонахождение" />
+            <TableColumn fx:id="maintenanceOfAll" prefWidth="287.0" text="Необходимые для обслуживания инструменты" />
+            <TableColumn fx:id="nextValueSOTOfAll" prefWidth="166.0" text="Следующее значение нормативной наработки" />
          </columns>
       </TableView>
-      <Button fx:id="createPlanBut" layoutX="852.0" layoutY="190.0" mnemonicParsing="false" text="Создать план" />
+      <Button fx:id="createPlanBut" layoutX="852.0" layoutY="30.0" mnemonicParsing="false" text="Создать план" />
       <Button fx:id="addItemBut" layoutX="818.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="168.0" text="Добавить оборудование" />
+      <Button fx:id="deleteSelectedItem" layoutX="818.0" layoutY="190.0" minHeight="0.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="168.0" text="Удалить оборудование" />
    </children>
 </AnchorPane>

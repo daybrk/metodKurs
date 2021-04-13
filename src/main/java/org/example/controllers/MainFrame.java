@@ -1,29 +1,59 @@
 package org.example.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.App;
+import org.example.entities.Equipment;
 
 public class MainFrame {
 
-    @FXML
-    private ResourceBundle resources;
 
     @FXML
-    private URL location;
+    private TableView<Equipment> selectedItemTable;
 
     @FXML
-    private TableView<?> selectedItemTable;
+    private TableColumn<Equipment, Integer> selectedId;
 
     @FXML
-    private TableView<?> allItemTable;
+    private TableColumn<Equipment, String> selectedName;
+
+    @FXML
+    private TableColumn<Equipment, String> selectedLocation;
+
+    @FXML
+    private TableColumn<Equipment, String> selectedMaintenance;
+
+    @FXML
+    private TableColumn<Equipment, String> selectedNextValueSOT;
+
+    @FXML
+    private TableView<Equipment> allItemTable;
+
+    @FXML
+    private TableColumn<Equipment, Integer> numberOfAll;
+
+    @FXML
+    private TableColumn<Equipment, String> nameOfAllItem;
+
+    @FXML
+    private TableColumn<Equipment, String> locationOfAll;
+
+    @FXML
+    private TableColumn<Equipment, String> maintenanceOfAll;
+
+    @FXML
+    private TableColumn<Equipment, String> nextValueSOTOfAll;
 
     @FXML
     private Button createPlanBut;
@@ -32,7 +62,51 @@ public class MainFrame {
     private Button addItemBut;
 
     @FXML
+    private Button deleteSelectedItem;
+
+
+    private ObservableList<Equipment> eq = FXCollections.observableArrayList();
+
+    private static final ObservableList<Equipment> listOfEquip = FXCollections.observableArrayList(
+            new Equipment(0, "A", "A","A", "15.02.2000"),
+            new Equipment(0, "A", "A","A", "15.02.2000"),
+            new Equipment(0, "A", "A","A", "15.02.2000"),
+            new Equipment(0, "A", "A","A", "15.02.2000"),
+            new Equipment(0, "A", "A","A", "15.02.2000")
+    );
+
+    @FXML
     void initialize() {
+
+        numberOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, Integer>("number"));
+        nameOfAllItem.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nameOfEquip"));
+        locationOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, String>("equipLocation"));
+        maintenanceOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, String>("maintenanceTools"));
+        nextValueSOTOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nextValueSOT"));
+
+        allItemTable.setItems(listOfEquip);
+
+
+        selectedId.setCellValueFactory(new PropertyValueFactory<Equipment, Integer>("number"));
+        selectedName.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nameOfEquip"));
+        selectedLocation.setCellValueFactory(new PropertyValueFactory<Equipment, String>("equipLocation"));
+        selectedMaintenance.setCellValueFactory(new PropertyValueFactory<Equipment, String>("maintenanceTools"));
+        selectedNextValueSOT.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nextValueSOT"));
+
+        addItemBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                eq.addAll(allItemTable.getSelectionModel().getSelectedItem());
+                selectedItemTable.setItems(eq);
+            }
+        });
+
+        deleteSelectedItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                selectedItemTable.getItems().remove(selectedItemTable.getSelectionModel().getSelectedItem());
+            }
+        });
 
         createPlanBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -44,6 +118,7 @@ public class MainFrame {
                 }
             }
         });
+
 
     }
 }
