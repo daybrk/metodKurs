@@ -1,6 +1,8 @@
 package org.example.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import javafx.collections.FXCollections;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.App;
+import org.example.QueryClass;
 import org.example.entities.Equipment;
 
 public class MainFrame {
@@ -67,16 +70,12 @@ public class MainFrame {
 
     private ObservableList<Equipment> eq = FXCollections.observableArrayList();
 
-    private static final ObservableList<Equipment> listOfEquip = FXCollections.observableArrayList(
-            new Equipment(0, "A", "A","A", "15.02.2000"),
-            new Equipment(0, "A", "A","A", "15.02.2000"),
-            new Equipment(0, "A", "A","A", "15.02.2000"),
-            new Equipment(0, "A", "A","A", "15.02.2000"),
-            new Equipment(0, "A", "A","A", "15.02.2000")
-    );
+    private static final ObservableList<Equipment> listOfEquip = FXCollections.observableArrayList();
 
     @FXML
     void initialize() {
+
+        addNewEquip();
 
         numberOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, Integer>("number"));
         nameOfAllItem.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nameOfEquip"));
@@ -119,6 +118,15 @@ public class MainFrame {
             }
         });
 
+    }
+
+    private static void addNewEquip () {
+
+        List<Equipment> list;
+        list = QueryClass.loadEquipFromDB();
+
+        listOfEquip.addAll(list);
 
     }
+
 }

@@ -1,0 +1,22 @@
+.root {
+  -fx-background-color: white;
+}
+
+.table-view {
+
+
+}
+
+
+.nested-column-header {
+  /* Добавляет режим наложения
+  -fx-blend-mode	[ add | blue | color-burn | color-dodge | darken | difference
+  | exclusion | green | hard-light | lighten | multiply | overlay | red
+  | screen | soft-light | src-atop | src-in | src-out | src-over ]*/
+
+  /* При наведении на элемент изменяет курсор на какой-то из перечисленного списка
+  -fx-cursor	[ null | crosshair | default | hand | move | e-resize
+  | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize
+  | s-resize | w-resize | v-resize | text | wait ] | <url> */
+
+}

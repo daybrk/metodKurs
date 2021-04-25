@@ -20,8 +20,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        ConnectDB.ex();
         addScene("mainFrame.fxml", 600, 1000);
-
     }
 
     public static void addScene(String name, int h, int w) throws IOException {

@@ -31,6 +31,12 @@
             <artifactId>spring-context</artifactId>
             <version>5.3.3</version>
         </dependency>
+        <!-- add the JDBC Driver -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>8.4.1.jre11</version>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
