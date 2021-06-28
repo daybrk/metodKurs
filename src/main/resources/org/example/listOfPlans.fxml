@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="502.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ListOfPlans">
+   <children>
+      <TableView fx:id="inWorkTable" layoutX="14.0" layoutY="14.0" prefHeight="474.0" prefWidth="134.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="inWorkId" prefWidth="22.0" text="№" />
+          <TableColumn fx:id="inWorkStatus" prefWidth="110.0" text="Статус работ" />
+        </columns>
+      </TableView>
+
+       <TableView fx:id="tableDescription" layoutX="164.0" layoutY="14.0" prefHeight="347.0" prefWidth="824.0" stylesheets="@../../styles/style.css">
+           <columns>
+               <TableColumn fx:id="desId" prefWidth="23.0" text="№" />
+               <TableColumn fx:id="desName" prefWidth="126.0" text="Имя оборудования" />
+               <TableColumn fx:id="desLocation" prefWidth="125.0" text="Местонахождение" />
+               <TableColumn fx:id="desMainten" prefWidth="264.0" text="Используемые инструменты для осмотра" />
+            <TableColumn fx:id="desInspector" prefWidth="152.0" text="Ответственный" />
+           </columns>
+       </TableView>
+      <Button fx:id="closeWorkButton" layoutX="164.0" layoutY="387.0" mnemonicParsing="false" text="Завершить работу" />
+      <Button fx:id="openFault" layoutX="819.0" layoutY="387.0" mnemonicParsing="false" text="Посмотреть неисправности" />
+   </children>
+</AnchorPane>

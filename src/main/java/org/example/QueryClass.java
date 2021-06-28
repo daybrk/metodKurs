@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.entities.Equipment;
+import org.example.entities.EquipmentsInWork;
+import org.example.entities.InWork;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,6 +23,50 @@ public class QueryClass {
         }
     }
 
+    public static String insertEquip =
+            "INSERT INTO [EquipmentsInWork] " +
+                    "([workId], [name], [location], [maintenance], [nextValueSOT], [faultCause], [inspector])";
+
+
+    public static Boolean addEquipToWork(int id, String name, String location,
+                                        String maintenance, String nextValueSOT, String faultCause, String inspector) {
+
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute(insertEquip +
+                    " VALUES (" + id + ",'" + name + "','" + location + "','" + maintenance + "','"
+                    + nextValueSOT + "','" + faultCause + "','" + inspector + "')");
+
+            stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error: addEquipToWork");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static String insertWork =
+            "INSERT INTO [InWork] " +
+                    "([workId], [brigade], [workStatus])";
+
+
+    public static Boolean addNewInWork(int id, String brigade, String workStatus) {
+
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute(insertWork +
+                    " VALUES (" + id + ",'" + brigade + "','" + workStatus + "')");
+
+            stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error: addNewInWork");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public static List<Equipment> loadEquipFromDB () {
 
         List<Equipment> equipment = new ArrayList<>();
@@ -39,7 +85,6 @@ public class QueryClass {
 
                 equipment.add(new Equipment(i, name, location, maintenance, nextVal));
 
-
             }
 
             executeQuery.close();
@@ -52,4 +97,63 @@ public class QueryClass {
         return equipment;
     }
 
+    public static List<EquipmentsInWork> loadEquipInWork () {
+
+        List<EquipmentsInWork> equipmentInWork = new ArrayList<>();
+        int i;
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet executeQuery = statement.executeQuery("SELECT * FROM EquipmentsInWork");
+
+            while (executeQuery.next()) {
+                i  = executeQuery.getInt("workId");
+                String name = executeQuery.getString("name");
+                String location = executeQuery.getString("location");
+                String maintenance = executeQuery.getString("maintenance");
+                String nextVal = executeQuery.getString("nextValueSOT");
+                String fault = executeQuery.getString("faultCause");
+                String inspector = executeQuery.getString("inspector");
+
+                equipmentInWork.add(new EquipmentsInWork(i, name, location, maintenance, nextVal, fault, inspector));
+
+            }
+
+            executeQuery.close();
+            statement.close();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return equipmentInWork;
+    }
+
+    public static List<InWork> loadInWork () {
+
+        List<InWork> inWork = new ArrayList<>();
+        int i;
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet executeQuery = statement.executeQuery("SELECT * FROM inWork");
+
+            while (executeQuery.next()) {
+                i  = executeQuery.getInt("workId");
+                String brigade = executeQuery.getString("brigade");
+                String workStatus = executeQuery.getString("workStatus");
+
+                inWork.add(new InWork(i, brigade, workStatus));
+
+            }
+
+            executeQuery.close();
+            statement.close();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return inWork;
+    }
 }

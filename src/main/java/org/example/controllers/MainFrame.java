@@ -67,15 +67,65 @@ public class MainFrame {
     @FXML
     private Button deleteSelectedItem;
 
+    @FXML
+    private Button inWorkBut;
 
-    private ObservableList<Equipment> eq = FXCollections.observableArrayList();
 
-    private static final ObservableList<Equipment> listOfEquip = FXCollections.observableArrayList();
+    public static final ObservableList<Equipment> eq = FXCollections.observableArrayList();
+
+    private final ObservableList<Equipment> listOfEquip = FXCollections.observableArrayList();
 
     @FXML
     void initialize() {
 
         addNewEquip();
+
+        setItemToTable();
+        setSelectedItemToTable();
+
+        deleteSelectedItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                selectedItemTable.getItems().remove(selectedItemTable.getSelectionModel().getSelectedItem());
+            }
+        });
+
+        createPlanBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    App.addScene("createPlan.fxml", 500, 1000);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        inWorkBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    App.addScene("listOfPlans.fxml", 500, 1000);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    private void addNewEquip() {
+
+        List<Equipment> list;
+        list = QueryClass.loadEquipFromDB();
+
+        listOfEquip.addAll(list);
+
+    }
+
+    private void setItemToTable() {
 
         numberOfAll.setCellValueFactory(new PropertyValueFactory<Equipment, Integer>("number"));
         nameOfAllItem.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nameOfEquip"));
@@ -85,6 +135,9 @@ public class MainFrame {
 
         allItemTable.setItems(listOfEquip);
 
+    }
+
+    private void setSelectedItemToTable() {
 
         selectedId.setCellValueFactory(new PropertyValueFactory<Equipment, Integer>("number"));
         selectedName.setCellValueFactory(new PropertyValueFactory<Equipment, String>("nameOfEquip"));
@@ -99,33 +152,6 @@ public class MainFrame {
                 selectedItemTable.setItems(eq);
             }
         });
-
-        deleteSelectedItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                selectedItemTable.getItems().remove(selectedItemTable.getSelectionModel().getSelectedItem());
-            }
-        });
-
-        createPlanBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                try {
-                    App.addScene("createPlan.fxml", 500, 1000);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-    }
-
-    private static void addNewEquip () {
-
-        List<Equipment> list;
-        list = QueryClass.loadEquipFromDB();
-
-        listOfEquip.addAll(list);
 
     }
 

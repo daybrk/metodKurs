@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +21,12 @@
             <TableColumn fx:id="planStatus" prefWidth="70.0" text="Статус" />
         </columns>
     </TableView>
-      <MenuButton fx:id="menuBrigade" layoutX="758.0" layoutY="20.0" mnemonicParsing="false" text="Ответственная бригада:" />
+      <MenuButton fx:id="menuBrigade" layoutX="772.0" layoutY="30.0" mnemonicParsing="false" text="Ответственная бригада:">
+         <items>
+            <MenuItem fx:id="first" mnemonicParsing="false" text="1 Бригада" />
+            <MenuItem fx:id="second" mnemonicParsing="false" text="2 Бригада" />
+            <MenuItem fx:id="third" mnemonicParsing="false" text="3 Бригада" />
+         </items></MenuButton>
       <ListView fx:id="listOfInstruments" layoutX="14.0" layoutY="284.0" prefHeight="200.0" prefWidth="262.0" />
       <Text layoutX="14.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Список необходимых для обслуживания инструментов" textAlignment="CENTER" wrappingWidth="262.0" />
       <Text layoutX="443.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Статус:                       ______________________________" />

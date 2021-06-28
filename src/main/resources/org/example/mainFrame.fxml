@@ -29,5 +29,6 @@
       <Button fx:id="createPlanBut" layoutX="852.0" layoutY="30.0" mnemonicParsing="false" text="Создать план" />
       <Button fx:id="addItemBut" layoutX="818.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="168.0" text="Добавить оборудование" />
       <Button fx:id="deleteSelectedItem" layoutX="818.0" layoutY="190.0" minHeight="0.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="168.0" text="Удалить оборудование" />
+      <Button fx:id="inWorkBut" layoutX="845.0" layoutY="486.0" mnemonicParsing="false" text="Планы в работе" />
    </children>
 </AnchorPane>
